@@ -20,7 +20,9 @@ function Login() {
         } else {
             const data = await response.json();
             localStorage.setItem('token', data.token)
-            if (data?.level == 0) { navigation("/admin")}
+            if (data?.level == 0) { navigation("/admin")} else {
+                navigation("/user")
+            }
 
         }
     }

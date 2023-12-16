@@ -10,6 +10,7 @@ import {
 import Login from './Login';
 import ErrorPage from './ErrorPage';
 import Dashboard from './admin/Dashboard';
+import Client from './user/Client';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,11 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Dashboard />,
+    errorElement : <ErrorPage />
+  },
+  {
+    path: "/user",
+    element: <Client />,
     errorElement : <ErrorPage />
   },
 ]);

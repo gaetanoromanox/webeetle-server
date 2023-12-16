@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router(); 
+const router = express.Router();
 const jwt = require("jsonwebtoken");
 
 function verifyToken(req, res, next) {
@@ -39,9 +39,9 @@ router.post("/removeTicket/:id", verifyToken, async (req, res) => {
         const film = await Film.findByPk(id);
         const newTicket = film.ticket - ticket;
         const updateTicket = await Film.update({ ticket: newTicket }, { where: { id: id } });
-   const newIncome = film.income + income;
+        const newIncome = film.income + income;
         const updateIncome = await Film.update({ income: newIncome }, { where: { id: id } });
-        res.status(201).json(updateTicket);
+        res.status(201).json(updateTicket, updateIncome);
     } catch (err) {
         console.log("err2", err)
         res.status(500).send
