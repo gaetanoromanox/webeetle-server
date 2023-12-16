@@ -1,0 +1,36 @@
+{
+  "name": "test1",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Andrea Mennitto",
+  "license": "NO",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "swag": "node swagger.js",
+    "seed": "node seed_questionario.js && node seed_procedure.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "docxtemplater": "^3.37.7",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.9.3",
+    "nodemon": "^3.0.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "pizzip": "^3.1.4",
+    "pm2": "^5.2.2",
+    "sequelize": "^6.25.3",
+    "sqlite3": "^5.1.2"
+  },
+  "devDependencies": {
+    "puppeteer": "^19.11.1",
+    "showdown": "^2.1.0",
+    "swagger-autogen": "^2.23.0",
+    "widdershins": "^4.0.1"
+  }
+}
