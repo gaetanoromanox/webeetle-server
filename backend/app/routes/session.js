@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+
 router.post("/register-user", async (req, res) => {
   const { User } = res.app.locals.models;
   const { mail, password, name, surname } = req.body;
@@ -27,21 +28,37 @@ router.post("/register-admin", async (req, res) => {
   }
 });
 
-router.post('/login-user', async (req, res) => {
-  const { User } = res.app.locals.models;
+router.post('/login', async (req, res) => {
+  const { User, Admin } = res.app.locals.models;
   const { mail, password } = req.body;
   try {
     const user = await User.findOne({ where: { mail } });
     if (user) {
       const validPassword = await bcrypt.compare(password, user.password);
       if (validPassword) {
-        const token = jwt.sign({ mail: user.mail }, process.env.TOKEN_KEY);
+        const token = jwt.sign({ mail: user.mail }, process.env.TOKEN_KEY, 
+          {
+            expiresIn: "30d",
+        });
         res.json({ token });
       } else {
         res.status(401).json({ error: 'Credenziali non valide' });
       }
     } else {
-      res.status(401).json({ error: 'Credenziali non valide' });
+      const admin = await Admin.findOne({ where: { mail } });
+      if (admin) {
+        const validPassword = await bcrypt.compare(password, admin.password);
+        if (validPassword) {
+          const token = jwt.sign({ mail: admin.mail }, process.env.TOKEN_KEY, {
+            expiresIn: "30d",
+        });
+          res.json({ token, level: admin.level  });
+        } else {
+          res.status(401).json({ error: 'Credenziali non valide' });
+        }
+      } else {
+        res.status(401).json({ error: 'Credenziali non valide' });
+      }
     }
   } catch (error) {
     console.log(error);

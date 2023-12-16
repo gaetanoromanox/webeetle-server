@@ -1,9 +1,26 @@
 const express = require('express');
-const router = express.Router();
-const bcrypt = require("bcryptjs");
+const router = express.Router(); 
 const jwt = require("jsonwebtoken");
 
-router.post("/createPlanFilm", async (req, res) => {
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        jwt.verify(bearerToken, process.env.TOKEN_KEY, (err, authData) => {
+            if (err) {
+                res.sendStatus(403);
+            } else {
+                req.authData = authData;
+                next();
+            }
+        });
+    } else {
+        res.sendStatus(403);
+    }
+}
+
+router.post("/createPlanFilm", verifyToken, async (req, res) => {
     const { Film } = res.app.locals.models;
     const { start, title, price, description, ticket } = req.body;
     try {
@@ -15,7 +32,7 @@ router.post("/createPlanFilm", async (req, res) => {
     }
 });
 
-router.post("/removeTicket/:id", async (req, res) => {
+router.post("/removeTicket/:id", verifyToken, async (req, res) => {
     const { Film } = res.app.locals.models;
     const { ticket, id, income } = req.body;
     try {
@@ -32,7 +49,7 @@ router.post("/removeTicket/:id", async (req, res) => {
 
 });
 
-router.get("/getFilm", async (req, res) => {
+router.get("/getFilm", verifyToken, async (req, res) => {
     const { Film } = res.app.locals.models;
     try {
         const film = await Film.findAll();
@@ -43,7 +60,7 @@ router.get("/getFilm", async (req, res) => {
     }
 });
 
-router.get("/getFilm/:id", async (req, res) => {
+router.get("/getFilm/:id", verifyToken, async (req, res) => {
     const { Film } = res.app.locals.models;
     const { id } = req.params;
     try {
