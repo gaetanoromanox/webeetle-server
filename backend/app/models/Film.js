@@ -30,6 +30,10 @@ module.exports = function (sequelize, DataTypes) {
     income: {
       type: DataTypes.FLOAT,
       allowNull: true
+    },
+    discoutActive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   });
 };
