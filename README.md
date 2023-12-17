@@ -10,11 +10,15 @@ In backend/app/.env dovrai inserire i setting di postgres.
 
 Installa tutte le dipendenze con:
 
-# 'npm install'
+### `npm install`
+
+o
+
+### `yarn install`
 
 e poi naviga fino ad /app e runna con 
 
-# 'node index.js'
+###  `node index.js`
 
 
 
