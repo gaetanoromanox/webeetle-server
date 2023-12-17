@@ -21,7 +21,7 @@ e poi naviga fino ad /app e runna con
 
 # Getting Started with frontend
 
-Per il frontend invece naviga in /front-end
+Per il frontend invece naviga in /front-end/webeetle-client
 
 Installa tutte le dipendenze con:
 
