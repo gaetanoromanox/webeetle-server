@@ -11,10 +11,16 @@ import Login from './Login';
 import ErrorPage from './ErrorPage';
 import Dashboard from './admin/Dashboard';
 import Client from './user/Client';
+import Register from './Register';
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
+    errorElement : <ErrorPage />
+  },
+  {
+    path: "/register",
+    element: <Register />,
     errorElement : <ErrorPage />
   },
   {

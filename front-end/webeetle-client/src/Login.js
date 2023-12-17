@@ -48,6 +48,13 @@ function Login() {
                             Sign In
                         </button>
                     </div>
+
+                    <div className="flex items-center justify-between mt-16">
+                        <button onClick={() => navigation("/register")} className="border border-white text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Registrati
+                        </button>
+                        </div>
+
                 </div>
             </div>
             <div className="flex flex-1 items-center justify-center bg-[#17082A] bg-img overflow-hidden relative">
