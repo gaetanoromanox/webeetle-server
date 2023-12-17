@@ -83,9 +83,6 @@ router.get("/getFilm/:id", verifyToken, async (req, res) => {
         console.log("err2", err)
         res.status(500).send
     }
-})
-
-
-
+})  
 
 module.exports = router;
