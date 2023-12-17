@@ -19,4 +19,20 @@ e poi naviga fino ad /app e runna con
 ###  `node index.js`
 
 
+# Getting Started with frontend
+
+Per il frontend invece naviga in /front-end
+
+Installa tutte le dipendenze con:
+
+### `npm install`
+o
+### `yarn install`
+
+e poi starta con
+
+
+### `npm start`
+o
+### `yarn start`
 
