@@ -89,7 +89,7 @@ function Client() {
 
     return (
 
-        <div classNameName="w-screen h-screen flex flex-col">
+        <div className="w-screen h-screen flex flex-col">
             <div className="isolate bg-white px-6 py-6 pt-12 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center">
                     <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Programmazione settimana corrente</h2>
